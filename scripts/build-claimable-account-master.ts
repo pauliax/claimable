@@ -25,13 +25,23 @@ async function main() {
       let address;
       let quantityDropped;
 
-      // tornado csv does not have headers
-      if (protocolName === "tornado-cash") {
-        address = sanitizeAddress(drop[0]);
-        quantityDropped = drop[1];
-      } else {
-        address = sanitizeAddress(drop.address);
-        quantityDropped = drop[value.tokenNamed];
+      switch (protocolName) {
+        case "tornado-cash": {
+          // tornado csv does not have headers
+          address = sanitizeAddress(drop[0]);
+          quantityDropped = drop[1];
+          break;
+        }
+        case "mask-token": {
+          // mask csv does not have amounts
+          address = sanitizeAddress(drop[0]);
+          quantityDropped = "";
+          break;
+        }
+        default: {
+          address = sanitizeAddress(drop.address);
+          quantityDropped = drop[value.tokenNamed];
+        }
       }
 
       if (masterData[address]) {

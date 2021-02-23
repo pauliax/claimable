@@ -14,6 +14,9 @@ const fetch = require("node-fetch");
 
 const claimableDataDir = path.resolve(__dirname, "..", "src", "claimable-data");
 
+// some CSVs do not have headers
+const noHeaderProtocols = ["tornado-cash", "mask-token"];
+
 async function main() {
   for (const [protocolName, value] of Object.entries(csvClaimables)) {
     let parseOptions: any = {
@@ -21,8 +24,7 @@ async function main() {
       skip_empty_lines: true,
     };
 
-    // tornado csv does not have headers
-    if (protocolName === "tornado-cash") {
+    if (noHeaderProtocols.includes(protocolName)) {
       parseOptions = {
         skip_empty_lines: true,
       };

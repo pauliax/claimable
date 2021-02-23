@@ -91,4 +91,13 @@ export const csvClaimables = {
   //   claimUrl:
   //     "https://badgerdao.medium.com/digg-at-a-glance-complete-guide-d0dc2c29d303",
   // },
+  "mask-token": {
+    url:
+      "https://gist.githubusercontent.com/pauliax/b7fefe8409f75a4b033f4898cb688fd4/raw/148df68362686c663310a599bbd448319f7c3940/mask_airdrop.csv",
+    tokenNamed: "no-header",
+    imgSrc: "/images/csv-claimables/mask.jpg",
+    claimUrl:
+      "https://masknetwork.medium.com/check-airdrop-not-claimable-feature-is-live-ed297d5130fc",
+    displayName: "MASK",
+  },
 } as const;
